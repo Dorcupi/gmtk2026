@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://365du4231oro"]
+
+[ext_resource type="Script" uid="uid://l725iwy87ue7" path="res://scripts/microgames/do_nothing.gd" id="1_jmehd"]
+
+[node name="DoNothing" type="Node2D" unique_id=1419326949]
+script = ExtResource("1_jmehd")
+game_name = "Do Nothing"
+metadata/_custom_type_script = "uid://cfnntxqkpwn3k"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=491749319]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2037801952]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

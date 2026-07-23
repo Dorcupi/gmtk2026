@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://elnkuk0n85fo"]
+
+[ext_resource type="Texture2D" uid="uid://do3gmtvfrhikh" path="res://assets/ui/Yellow/Default/button_square_depth_border.png" id="1_o5qli"]
+[ext_resource type="Shader" uid="uid://bs8efxd4ky7hr" path="res://shaders/stripes.gdshader" id="1_tbgi4"]
+[ext_resource type="Script" uid="uid://coa683yrec247" path="res://scripts/main.gd" id="1_tipki"]
+[ext_resource type="PackedScene" uid="uid://365du4231oro" path="res://scenes/microgames/do_nothing.tscn" id="2_85g3d"]
+[ext_resource type="Texture2D" uid="uid://cglb1yrg1i7yv" path="res://assets/ui/Yellow/Double/button_round_depth_gradient.png" id="2_tbgi4"]
+[ext_resource type="Script" uid="uid://dm6c87wch0ttq" path="res://scripts/microgame_button.gd" id="3_85g3d"]
+[ext_resource type="Texture2D" uid="uid://4jxvkqlw1sgb" path="res://assets/ui/Yellow/Double/button_round_gradient.png" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://m8cq3yme86k1" path="res://assets/ui/Yellow/Double/button_round_flat.png" id="5_tipki"]
+[ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="6_tefeu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbgi4"]
+shader = ExtResource("1_tbgi4")
+shader_parameter/color_gap = Color(0.9764706, 0.9098039, 0.63529414, 1)
+shader_parameter/color_stripe = Color(0.96371835, 0.87453634, 0.5058518, 1)
+shader_parameter/divisions = 12.0
+shader_parameter/stripe_bias = 2.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.58
+
+[sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
+font = ExtResource("6_tefeu")
+font_size = 60
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="Animation" id="Animation_tefeu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:offset_transform_position_ratio:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:offset_transform_position_ratio:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MicrogameButton:offset_transform_position_ratio:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MicrogameButton:offset_transform_position_ratio:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_o6xl0"]
+resource_name = "break_apart"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:offset_transform_position_ratio:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:offset_transform_position_ratio:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1, -0.083333336, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MicrogameButton:offset_transform_position_ratio:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MicrogameButton:offset_transform_position_ratio:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.083333336, -0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
+_data = {
+&"RESET": SubResource("Animation_tefeu"),
+&"break_apart": SubResource("Animation_o6xl0")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("1_o5qli")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("6_tefeu")
+font_size = 60
+outline_color = Color(0.9764706, 0.9098039, 0.63529414, 1)
+shadow_color = Color(0, 0, 0, 0.14509805)
+shadow_offset = Vector2(0, 6)
+
+[node name="Node2D" type="Node2D" unique_id=1679242793 node_paths=PackedStringArray("time_left_label", "microgame_button", "main_animation_player", "microgame_spawner")]
+script = ExtResource("1_tipki")
+time_left_label = NodePath("CanvasLayer/Control2/TimeLeftLabel")
+microgame_button = NodePath("CanvasLayer/Control/MicrogameButton")
+main_animation_player = NodePath("CanvasLayer/Control/AnimationPlayer")
+microgame_spawner = NodePath("MicrogameSpawner")
+microgames = Array[PackedScene]([ExtResource("2_85g3d")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1227043791]
+layer = 999
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=558717926]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Control" unique_id=346439847]
+material = SubResource("ShaderMaterial_tbgi4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+color = Color(0.9764706, 0.9098039, 0.63529414, 1)
+
+[node name="MicrogameButton" type="Control" parent="CanvasLayer/Control" unique_id=1333050970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+script = ExtResource("3_85g3d")
+
+[node name="ButtonShadow" type="TextureRect" parent="CanvasLayer/Control/MicrogameButton" unique_id=1035645281]
+modulate = Color(0, 0, 0, 0.3764706)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -149.0
+offset_right = 160.5
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tipki")
+
+[node name="Button" type="TextureButton" parent="CanvasLayer/Control/MicrogameButton" unique_id=1623765078]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -160.5
+offset_right = 160.5
+offset_bottom = 160.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_tbgi4")
+texture_pressed = ExtResource("3_jyhfs")
+texture_hover = ExtResource("2_tbgi4")
+texture_disabled = ExtResource("5_tipki")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MicrogameButton/Button" unique_id=2017879566]
+modulate = Color(1, 1, 1, 0.8156863)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS"
+label_settings = SubResource("LabelSettings_yf5fn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control" unique_id=1215172050]
+libraries/ = SubResource("AnimationLibrary_tipki")
+
+[node name="Control2" type="Control" parent="CanvasLayer" unique_id=1494001974]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TimeLeftPanel" type="Panel" parent="CanvasLayer/Control2" unique_id=1710006422]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -139.5
+offset_top = 14.0
+offset_right = 139.5
+offset_bottom = 77.0
+grow_horizontal = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="TimeLeftLabel" type="Label" parent="CanvasLayer/Control2" unique_id=225608898]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -262.0
+offset_right = 263.0
+offset_bottom = 84.0
+grow_horizontal = 2
+text = "30000000000"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MicrogameSpawner" type="Node2D" parent="." unique_id=1358850749]
