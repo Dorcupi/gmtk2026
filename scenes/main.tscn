@@ -5,8 +5,10 @@
 [ext_resource type="Script" uid="uid://coa683yrec247" path="res://scripts/main.gd" id="1_tipki"]
 [ext_resource type="PackedScene" uid="uid://365du4231oro" path="res://scenes/microgames/do_nothing.tscn" id="2_85g3d"]
 [ext_resource type="Texture2D" uid="uid://cglb1yrg1i7yv" path="res://assets/ui/Yellow/Double/button_round_depth_gradient.png" id="2_tbgi4"]
-[ext_resource type="Script" uid="uid://dm6c87wch0ttq" path="res://scripts/microgame_button.gd" id="3_85g3d"]
+[ext_resource type="Script" uid="uid://3jxgqb5sdvh6" path="res://scripts/microgame_button.gd" id="3_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bf66xf87r73mn" path="res://scenes/microgames/kill_the_zombies.tscn" id="3_choun"]
 [ext_resource type="Texture2D" uid="uid://4jxvkqlw1sgb" path="res://assets/ui/Yellow/Double/button_round_gradient.png" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://c4ve78mfltks4" path="res://scenes/microgames/press_the_button.tscn" id="4_choun"]
 [ext_resource type="Texture2D" uid="uid://m8cq3yme86k1" path="res://assets/ui/Yellow/Double/button_round_flat.png" id="5_tipki"]
 [ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="6_tefeu"]
 
@@ -70,6 +72,18 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MicrogameButton/Button:mouse_filter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_o6xl0"]
 resource_name = "break_apart"
@@ -118,6 +132,18 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.083333336, -0.16666667, 0, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MicrogameButton/Button:mouse_filter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tipki"]
 _data = {
@@ -147,7 +173,7 @@ time_left_label = NodePath("CanvasLayer/Control2/TimeLeftLabel")
 microgame_button = NodePath("CanvasLayer/Control/MicrogameButton")
 main_animation_player = NodePath("CanvasLayer/Control/AnimationPlayer")
 microgame_spawner = NodePath("MicrogameSpawner")
-microgames = Array[PackedScene]([ExtResource("2_85g3d")])
+microgames = Array[PackedScene]([ExtResource("2_85g3d"), ExtResource("3_choun"), ExtResource("4_choun")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1227043791]
 layer = 999
@@ -159,6 +185,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Background" type="ColorRect" parent="CanvasLayer/Control" unique_id=346439847]
 material = SubResource("ShaderMaterial_tbgi4")
@@ -169,6 +196,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
+mouse_filter = 2
 color = Color(0.9764706, 0.9098039, 0.63529414, 1)
 
 [node name="MicrogameButton" type="Control" parent="CanvasLayer/Control" unique_id=1333050970]
@@ -179,6 +207,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
+mouse_filter = 2
 script = ExtResource("3_85g3d")
 
 [node name="ButtonShadow" type="TextureRect" parent="CanvasLayer/Control/MicrogameButton" unique_id=1035645281]
@@ -195,6 +224,7 @@ offset_right = 160.5
 offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_tipki")
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Control/MicrogameButton" unique_id=1623765078]
@@ -255,6 +285,7 @@ offset_bottom = 77.0
 grow_horizontal = 2
 offset_transform_enabled = true
 offset_transform_scale = Vector2(2, 2)
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
 [node name="TimeLeftLabel" type="Label" parent="CanvasLayer/Control2" unique_id=225608898]

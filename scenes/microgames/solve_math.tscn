@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://c54rmsofc1s35"]
+
+[ext_resource type="Script" uid="uid://b5otmcm0rg8s3" path="res://scripts/microgames/solve_math.gd" id="1_7pme1"]
+[ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="2_2qfjo"]
+[ext_resource type="Shader" uid="uid://cre6kmwi4kowh" path="res://shaders/clouds.gdshader" id="2_7pme1"]
+[ext_resource type="Texture2D" uid="uid://u53o5gx1i5ho" path="res://assets/ui/Yellow/Double/button_square_depth_gloss.png" id="3_0g0hd"]
+[ext_resource type="Texture2D" uid="uid://c1q1xv72lcybk" path="res://assets/ui/Yellow/Double/button_square_gloss.png" id="4_7pme1"]
+[ext_resource type="Texture2D" uid="uid://durca8rxeeyqu" path="res://assets/ui/Yellow/Double/button_square_flat.png" id="5_l2tpn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7o4j0"]
+noise_type = 0
+frequency = 0.0664
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2tpn"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_7o4j0")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_snptb"]
+noise_type = 0
+frequency = 0.0939
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mcwrq"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_snptb")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_7pme1"]
+colors = PackedColorArray(0.47058824, 0.78431374, 1, 1, 0.8663042, 0.9427197, 0.99999994, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8krum"]
+gradient = SubResource("Gradient_7pme1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g0hd"]
+shader = ExtResource("2_7pme1")
+shader_parameter/pixelation = Vector2(64, 64)
+shader_parameter/cloud_noise1 = SubResource("NoiseTexture2D_l2tpn")
+shader_parameter/scroll_speed1 = Vector2(0.05, 0.15)
+shader_parameter/cloud_noise2 = SubResource("NoiseTexture2D_mcwrq")
+shader_parameter/scroll_speed2 = Vector2(-0.015, -0.004)
+shader_parameter/center_pos = Vector2(0.5, 0)
+shader_parameter/position_impact = 0.75
+shader_parameter/color_gardient = SubResource("GradientTexture1D_8krum")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("2_2qfjo")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_7o4j0"]
+font = ExtResource("2_2qfjo")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_yf5fn"]
+font = ExtResource("2_2qfjo")
+font_size = 60
+font_color = Color(0, 0, 0, 0.34901962)
+
+[node name="SolveMath" type="Node2D" unique_id=897834688 node_paths=PackedStringArray("question_label", "option_buttons")]
+script = ExtResource("1_7pme1")
+question_label = NodePath("CanvasLayer/CenterContainer/Label2")
+option_buttons = [NodePath("CanvasLayer/CenterContainer/HBoxContainer/Option1"), NodePath("CanvasLayer/CenterContainer/HBoxContainer/Option2"), NodePath("CanvasLayer/CenterContainer/HBoxContainer/Option3"), NodePath("CanvasLayer/CenterContainer/HBoxContainer/Option4")]
+game_name = "Solve Math"
+metadata/_custom_type_script = "uid://cfnntxqkpwn3k"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1086333589]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=601636584]
+material = SubResource("ShaderMaterial_0g0hd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47211093, 0.7828937, 0.9999997, 1)
+
+[node name="CenterContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=107301468]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer" unique_id=461328512]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Think Fast!"
+label_settings = SubResource("LabelSettings_g4v7s")
+
+[node name="Label2" type="Label" parent="CanvasLayer/CenterContainer" unique_id=249802664]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1 + 1"
+label_settings = SubResource("LabelSettings_7o4j0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer" unique_id=629018291]
+layout_mode = 2
+alignment = 1
+
+[node name="Option1" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=1848124267]
+layout_mode = 2
+texture_normal = ExtResource("3_0g0hd")
+texture_pressed = ExtResource("4_7pme1")
+texture_disabled = ExtResource("5_l2tpn")
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/HBoxContainer/Option1" unique_id=549655067]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_yf5fn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=2134230560]
+layout_mode = 2
+texture_normal = ExtResource("3_0g0hd")
+texture_pressed = ExtResource("4_7pme1")
+texture_disabled = ExtResource("5_l2tpn")
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/HBoxContainer/Option2" unique_id=387081791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_yf5fn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option3" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=1766497006]
+layout_mode = 2
+texture_normal = ExtResource("3_0g0hd")
+texture_pressed = ExtResource("4_7pme1")
+texture_disabled = ExtResource("5_l2tpn")
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/HBoxContainer/Option3" unique_id=448427821]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_yf5fn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option4" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=835819034]
+layout_mode = 2
+texture_normal = ExtResource("3_0g0hd")
+texture_pressed = ExtResource("4_7pme1")
+texture_disabled = ExtResource("5_l2tpn")
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/HBoxContainer/Option4" unique_id=346917623]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+label_settings = SubResource("LabelSettings_yf5fn")
+horizontal_alignment = 1
+vertical_alignment = 1

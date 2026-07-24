@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://c4ve78mfltks4"]
+
+[ext_resource type="Script" uid="uid://bftrl3l4mual2" path="res://scripts/microgames/press_the_button.gd" id="1_q38cy"]
+[ext_resource type="Texture2D" uid="uid://m8cq3yme86k1" path="res://assets/ui/Yellow/Double/button_round_flat.png" id="2_q38cy"]
+[ext_resource type="Texture2D" uid="uid://cdkf6d72gsn0p" path="res://assets/ui/Green/Double/button_round_depth_gradient.png" id="3_q38cy"]
+[ext_resource type="Texture2D" uid="uid://c2s16he6sri8t" path="res://assets/ui/Green/Double/button_round_gradient.png" id="4_wwah2"]
+[ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="5_e6i68"]
+[ext_resource type="Texture2D" uid="uid://c0yvyhei755t5" path="res://assets/ui/Green/Double/button_round_flat.png" id="5_eujch"]
+[ext_resource type="Shader" uid="uid://cintr6hiskgjj" path="res://shaders/crt.gdshader" id="7_wwah2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yf5fn"]
+noise_type = 2
+frequency = 0.0006
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4v7s"]
+noise = SubResource("FastNoiseLite_yf5fn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1jhs"]
+font = ExtResource("5_e6i68")
+font_size = 60
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("5_e6i68")
+font_size = 40
+font_color = Color(1, 1, 1, 0.3764706)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+shader = ExtResource("7_wwah2")
+shader_parameter/scanline_color = Color(0, 0, 0, 1)
+shader_parameter/flicker_color = Color(0, 0, 0, 1)
+shader_parameter/scanlines_count = 10.0
+shader_parameter/scanlines_intensity = 0.05
+shader_parameter/flicker_speed = 30.0
+shader_parameter/flicker_intensity = 0.0
+shader_parameter/color_offset = 1.5
+shader_parameter/blur = 0.15
+
+[node name="PressTheButton" type="Node2D" unique_id=1731686494 node_paths=PackedStringArray("time_left_label", "timer", "clicks_left_label")]
+script = ExtResource("1_q38cy")
+time_left_label = NodePath("CanvasLayer/Button/TimeLeftLabel")
+timer = NodePath("Timer")
+clicks_left_label = NodePath("CanvasLayer/Button/Button/Label")
+game_name = "Press the Button"
+metadata/_custom_type_script = "uid://cfnntxqkpwn3k"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1861900252]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=142656623]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.58431375, 0.7411765, 0.84313726, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1508914493]
+modulate = Color(1, 1, 1, 0.23137255)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_g4v7s")
+
+[node name="Button" type="Control" parent="CanvasLayer" unique_id=991236742]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonShadow" type="TextureRect" parent="CanvasLayer/Button" unique_id=2124234578]
+modulate = Color(0, 0, 0, 0.3764706)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -149.0
+offset_right = 160.5
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_q38cy")
+
+[node name="Button" type="TextureButton" parent="CanvasLayer/Button" unique_id=325643901]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -160.5
+offset_right = 160.5
+offset_bottom = 160.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_q38cy")
+texture_pressed = ExtResource("4_wwah2")
+texture_hover = ExtResource("3_q38cy")
+texture_disabled = ExtResource("5_eujch")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Button/Button" unique_id=1414618552]
+modulate = Color(1, 1, 1, 0.8156863)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "8"
+label_settings = SubResource("LabelSettings_a1jhs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeftLabel" type="Label" parent="CanvasLayer/Button" unique_id=276129412]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = 181.0
+offset_right = 576.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2.00"
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=927697403]
+material = SubResource("ShaderMaterial_yf5fn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1939293852]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="CanvasLayer/Button/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -23,9 +23,12 @@ enum GAME_STATE {
 @export var microgames: Array[PackedScene]
 @onready var unplayed_microgames: Array[PackedScene] = microgames.duplicate()
 @export var starting_time: float = 60.0
+@export var start_add_amount: Array[float] = [5, 10]
 var time_left: float = starting_time
 var current_state: GAME_STATE = GAME_STATE.MAIN_SCENE
 var current_microgame: Microgame
+var add_amount: Array[float] = start_add_amount
+var level: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,6 +58,10 @@ func spawn_microgame() -> void:
 
 func level_up() -> void:
 	# insert code here to make game harder
+	level += 1
+	for i in add_amount:
+		if not i <= 0.5:
+			add_amount[add_amount.find(i)] = (i - 0.5)
 	unplayed_microgames = microgames.duplicate()
 	print("LEVEL UP")
 
@@ -73,6 +80,7 @@ func start_microgame() -> void:
 func win_microgame() -> void:
 	if current_state == GAME_STATE.MINIGAME:
 		print("WIN GAME")
+		time_left += snapped(randf_range(add_amount[0], add_amount[1]), 0.5)
 		current_state = GAME_STATE.MOVING_BACK
 		main_animation_player.play_backwards("break_apart")
 		await main_animation_player.animation_finished

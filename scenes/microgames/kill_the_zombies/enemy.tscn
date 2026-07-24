@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cj87tr6sl6ke"]
+
+[ext_resource type="Script" uid="uid://dteibu5qp7wgd" path="res://scripts/microgames/kill_the_zombies/enemy.gd" id="1_qp0nh"]
+[ext_resource type="Texture2D" uid="uid://cois80e11d44a" path="res://assets/characters/Zombie 1/zoimbie1_hold.png" id="2_ii85p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1r0yu"]
+radius = 26.305893
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 45.044422
+
+[node name="Enemy" type="CharacterBody2D" unique_id=476117997 node_paths=PackedStringArray("nav_agent", "nav_timer", "_target") groups=["enemies"]]
+script = ExtResource("1_qp0nh")
+nav_agent = NodePath("NavigationAgent2D")
+nav_timer = NodePath("NavigationTimer")
+_target = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838138623]
+texture = ExtResource("2_ii85p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624910888]
+shape = SubResource("CircleShape2D_1r0yu")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1662083399]
+path_postprocessing = 1
+
+[node name="NavigationTimer" type="Timer" parent="." unique_id=727098142]
+wait_time = 0.1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=916256189]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=739933570]
+shape = SubResource("CircleShape2D_yf5fn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
