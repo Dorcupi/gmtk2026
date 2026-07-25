@@ -23,7 +23,7 @@ enum GAME_STATE {
 @export var microgames: Array[PackedScene]
 @onready var unplayed_microgames: Array[PackedScene] = microgames.duplicate()
 @export var starting_time: float = 60.0
-@export var start_add_amount: Array[float] = [5, 10]
+@export var start_add_amount: Array[float] = [3, 5]
 var time_left: float = starting_time
 var current_state: GAME_STATE = GAME_STATE.MAIN_SCENE
 var current_microgame: Microgame

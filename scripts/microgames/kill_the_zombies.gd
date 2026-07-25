@@ -14,7 +14,7 @@ func _ready() -> void:
 		summon_enemy()
 
 func _process(delta: float) -> void:
-	if game_playing and not player.can_move:
+	if game_playing and player.can_move == false:
 		player.can_move = true
 		for i in get_tree().get_nodes_in_group("enemies"):
 			i.can_move = true

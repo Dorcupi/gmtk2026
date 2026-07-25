@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-@export var bullet: PackedScene
-@export var bullet_spawn_position: Marker2D
 @export var speed = 300.0
 var can_move: bool = false
+signal coin_picked_up
 
 func _physics_process(delta: float) -> void:
 
@@ -21,12 +20,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = move_toward(velocity.y, 0, speed)
 		
-		if Input.is_action_just_pressed("attack"):
-			shoot()
 
 	move_and_slide()
 
-func shoot() -> void:
-	var bul: Area2D = bullet.instantiate()
-	bul.transform = bullet_spawn_position.global_transform
-	owner.add_child(bul)
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("coins"):
+		area.queue_free()
+		coin_picked_up.emit()

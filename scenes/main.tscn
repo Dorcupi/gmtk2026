@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bf66xf87r73mn" path="res://scenes/microgames/kill_the_zombies.tscn" id="3_choun"]
 [ext_resource type="Texture2D" uid="uid://4jxvkqlw1sgb" path="res://assets/ui/Yellow/Double/button_round_gradient.png" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://c4ve78mfltks4" path="res://scenes/microgames/press_the_button.tscn" id="4_choun"]
+[ext_resource type="PackedScene" uid="uid://c54rmsofc1s35" path="res://scenes/microgames/solve_math.tscn" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://m8cq3yme86k1" path="res://assets/ui/Yellow/Double/button_round_flat.png" id="5_tipki"]
 [ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://c0be1f6q6ieoa" path="res://scenes/microgames/collect_the_coins.tscn" id="6_trceg"]
+[ext_resource type="PackedScene" uid="uid://brqi8mvi4jwq" path="res://scenes/microgames/replay_the_pattern.tscn" id="7_a8y0u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tbgi4"]
 shader = ExtResource("1_tbgi4")
@@ -173,7 +176,7 @@ time_left_label = NodePath("CanvasLayer/Control2/TimeLeftLabel")
 microgame_button = NodePath("CanvasLayer/Control/MicrogameButton")
 main_animation_player = NodePath("CanvasLayer/Control/AnimationPlayer")
 microgame_spawner = NodePath("MicrogameSpawner")
-microgames = Array[PackedScene]([ExtResource("2_85g3d"), ExtResource("3_choun"), ExtResource("4_choun")])
+microgames = Array[PackedScene]([ExtResource("2_85g3d"), ExtResource("3_choun"), ExtResource("4_choun"), ExtResource("5_eb6dy"), ExtResource("6_trceg"), ExtResource("7_a8y0u")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1227043791]
 layer = 999

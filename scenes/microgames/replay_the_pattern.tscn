@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://brqi8mvi4jwq"]
+
+[ext_resource type="Script" uid="uid://dn80kii6rh7wb" path="res://scripts/microgames/replay_the_pattern.gd" id="1_vb5fu"]
+[ext_resource type="Texture2D" uid="uid://be5pfg1t3bl8c" path="res://assets/ui/Green/Double/button_square_depth_gradient.png" id="2_2tplo"]
+[ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="2_081w1"]
+[ext_resource type="Texture2D" uid="uid://cdkf6d72gsn0p" path="res://assets/ui/Green/Double/button_round_depth_gradient.png" id="3_eo131"]
+[ext_resource type="Texture2D" uid="uid://c2s16he6sri8t" path="res://assets/ui/Green/Double/button_round_gradient.png" id="4_vb5fu"]
+[ext_resource type="Texture2D" uid="uid://c0yvyhei755t5" path="res://assets/ui/Green/Double/button_round_flat.png" id="5_081w1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_clhjk"]
+font = ExtResource("2_081w1")
+font_size = 70
+
+[node name="Microgame" type="Node2D" unique_id=192262300 node_paths=PackedStringArray("lights", "buttons", "label")]
+script = ExtResource("1_vb5fu")
+off_brightness = Color(0.40784314, 0.40784314, 0.40784314, 1)
+on_brightness = Color(1, 1, 1, 1)
+lights = [NodePath("CanvasLayer/CenterContainer/HBoxContainer/Light1"), NodePath("CanvasLayer/CenterContainer/HBoxContainer/Light2"), NodePath("CanvasLayer/CenterContainer/HBoxContainer/Light3"), NodePath("CanvasLayer/CenterContainer/HBoxContainer/Light4")]
+buttons = [NodePath("CanvasLayer/CenterContainer/HBoxContainer2/Button1"), NodePath("CanvasLayer/CenterContainer/HBoxContainer2/Button2"), NodePath("CanvasLayer/CenterContainer/HBoxContainer2/Button3"), NodePath("CanvasLayer/CenterContainer/HBoxContainer2/Button4")]
+label = NodePath("CanvasLayer/CenterContainer/Label")
+game_name = "Replay the Pattern"
+metadata/_custom_type_script = "uid://cfnntxqkpwn3k"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1054444257]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=341235483]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+
+[node name="CenterContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1613518460]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer" unique_id=1731001453]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Watch the Pattern"
+label_settings = SubResource("LabelSettings_clhjk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer" unique_id=1272854509]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Light1" type="TextureRect" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=2002934462]
+modulate = Color(0.40832946, 0.40832946, 0.40832946, 1)
+layout_mode = 2
+texture = ExtResource("2_2tplo")
+stretch_mode = 5
+
+[node name="Light2" type="TextureRect" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=1409815510]
+modulate = Color(0.40832946, 0.40832946, 0.40832946, 1)
+layout_mode = 2
+texture = ExtResource("2_2tplo")
+stretch_mode = 5
+
+[node name="Light3" type="TextureRect" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=299640621]
+modulate = Color(0.40832946, 0.40832946, 0.40832946, 1)
+layout_mode = 2
+texture = ExtResource("2_2tplo")
+stretch_mode = 5
+
+[node name="Light4" type="TextureRect" parent="CanvasLayer/CenterContainer/HBoxContainer" unique_id=2048059800]
+modulate = Color(0.40832946, 0.40832946, 0.40832946, 1)
+layout_mode = 2
+texture = ExtResource("2_2tplo")
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/CenterContainer" unique_id=330154784]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button1" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer2" unique_id=1196796710]
+layout_mode = 2
+texture_normal = ExtResource("3_eo131")
+texture_pressed = ExtResource("4_vb5fu")
+texture_disabled = ExtResource("5_081w1")
+
+[node name="Button2" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer2" unique_id=1027210024]
+layout_mode = 2
+texture_normal = ExtResource("3_eo131")
+texture_pressed = ExtResource("4_vb5fu")
+texture_disabled = ExtResource("5_081w1")
+
+[node name="Button3" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer2" unique_id=1468182248]
+layout_mode = 2
+texture_normal = ExtResource("3_eo131")
+texture_pressed = ExtResource("4_vb5fu")
+texture_disabled = ExtResource("5_081w1")
+
+[node name="Button4" type="TextureButton" parent="CanvasLayer/CenterContainer/HBoxContainer2" unique_id=1780325536]
+layout_mode = 2
+texture_normal = ExtResource("3_eo131")
+texture_pressed = ExtResource("4_vb5fu")
+texture_disabled = ExtResource("5_081w1")
