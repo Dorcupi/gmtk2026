@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="gmtk2026"
+config/name="The World's Easiest Game"
+config/description="Just wait 30 seconds to win the game. Don't do anything else."
+config/version="0.1.0"
+run/main_scene="uid://cqj0o676jvibd"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cglb1yrg1i7yv"
 
 [display]
 

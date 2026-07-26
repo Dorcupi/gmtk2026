@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cqj0o676jvibd"]
+
+[ext_resource type="Script" uid="uid://bxl7tiqrx0pas" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="1_l6cm7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g4v7s"]
+font = ExtResource("1_l6cm7")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" unique_id=168202991 node_paths=PackedStringArray("label")]
+script = ExtResource("1_ekxnf")
+label = NodePath("CanvasLayer/MarginContainer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1146844043]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=909131808]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=872768681]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1812537490]
+layout_mode = 2
+text = "to anyone playing this game,
+this game was supposed to be about a narrator convincing you to beat the game by waiting thirty seconds, but you disobey his orders and play WarioWare-style microgames to prolong the countdown (get it) until you win-lose or whatever you like to call it. however, I had no time and I also didn't want to scrap what I did do. so please enjoy this very small demo. press any button to start.
+ps: still rate this as you normally would."
+label_settings = SubResource("LabelSettings_g4v7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

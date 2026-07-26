@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c0be1f6q6ieoa" path="res://scenes/microgames/collect_the_coins.tscn" id="6_trceg"]
 [ext_resource type="PackedScene" uid="uid://brqi8mvi4jwq" path="res://scenes/microgames/replay_the_pattern.tscn" id="7_a8y0u"]
+[ext_resource type="Shader" uid="uid://b72u0bllgx3x2" path="res://shaders/transition.gdshader" id="15_jkv2x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tbgi4"]
 shader = ExtResource("1_tbgi4")
@@ -154,6 +155,259 @@ _data = {
 &"break_apart": SubResource("Animation_o6xl0")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_jkv2x"]
+font = ExtResource("6_tefeu")
+font_size = 60
+outline_size = 15
+outline_color = Color(0.2907505, 0.24701408, 0.048621677, 1)
+shadow_color = Color(0, 0, 0, 0.14509805)
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="Animation" id="Animation_muem4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:offset_transform_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:offset_transform_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_dp3eg"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.033333335, -0.16666667, 0, 0, 1, -0.033333335, -0.16666667, 0, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.033333335, -0.16666667, 0, 0, 1, -0.033333335, -0.16666667, 0, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.033333335, 0, 0, 0, 1, -0.033333335, 0, 0, 0, 1, -0.050000004, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.033333335, 0, 0, 0, 1, -0.033333335, 0, 0, 0, 1, -0.050000004, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.033333335, 0, 0, 0, 1, -0.033333335, 0, 0, 0, 1, -0.050000004, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.033333335, 0, 0, 0, 1, -0.033333335, 0, 0, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:offset_transform_position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.033333335, 0, 0, 0, 0, -0.033333335, 0, 0, 0, 0, -0.050000004, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:offset_transform_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.033333335, 0, 0, 0, 0, -0.033333335, 0, 0, 0, -30, -0.050000004, 5, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ld40"]
+_data = {
+&"RESET": SubResource("Animation_muem4"),
+&"appear": SubResource("Animation_dp3eg")
+}
+
+[sub_resource type="Animation" id="Animation_0ld40"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gqmmt"]
+resource_name = "popup"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.25, -0.033333335, -0.041666668, 0, 0, 0.25, -0.008333333, 0, 0, 0, 0.5, -0.03333333, -0.041666668, 0, 0, 0.5, -0.008333336, 0, 0, 0, 1, -0.03333333, -0.083333336, 0, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.45, 0.5, 0.7, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.25, -0.033333335, -0.041666668, 0, 0, 0.25, -0.008333333, 0, 0, 0, 0.5, -0.03333333, -0.041666668, 0, 0, 0.5, -0.008333336, 0, 0, 0, 1, -0.03333333, -0.083333336, 0, 0, 0, -0.050000004, 0.16666667, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.45, 0.5, 0.7, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yc10j"]
+_data = {
+&"RESET": SubResource("Animation_0ld40"),
+&"popup": SubResource("Animation_gqmmt")
+}
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("1_o5qli")
 texture_margin_left = 13.0
@@ -170,13 +424,61 @@ outline_color = Color(0.9764706, 0.9098039, 0.63529414, 1)
 shadow_color = Color(0, 0, 0, 0.14509805)
 shadow_offset = Vector2(0, 6)
 
-[node name="Node2D" type="Node2D" unique_id=1679242793 node_paths=PackedStringArray("time_left_label", "microgame_button", "main_animation_player", "microgame_spawner")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("15_jkv2x")
+shader_parameter/AspectRatio = 1.5
+shader_parameter/Diamonds = 10.0
+shader_parameter/pixel_size = 0.08
+shader_parameter/height = 1.0
+shader_parameter/disable_pixel = false
+
+[sub_resource type="Animation" id="Animation_jkv2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jbj1t"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muem4"]
+_data = {
+&"RESET": SubResource("Animation_jkv2x"),
+&"fade_out": SubResource("Animation_jbj1t")
+}
+
+[node name="Node2D" type="Node2D" unique_id=1679242793 node_paths=PackedStringArray("time_left_label", "microgame_button", "main_animation_player", "microgame_spawner", "game_name_popup", "level_up_popup")]
 script = ExtResource("1_tipki")
 time_left_label = NodePath("CanvasLayer/Control2/TimeLeftLabel")
 microgame_button = NodePath("CanvasLayer/Control/MicrogameButton")
 main_animation_player = NodePath("CanvasLayer/Control/AnimationPlayer")
 microgame_spawner = NodePath("MicrogameSpawner")
+game_name_popup = NodePath("CanvasLayer/Control/GameNamePopup")
+level_up_popup = NodePath("CanvasLayer/Control/LevelUpPopup")
 microgames = Array[PackedScene]([ExtResource("2_85g3d"), ExtResource("3_choun"), ExtResource("4_choun"), ExtResource("5_eb6dy"), ExtResource("6_trceg"), ExtResource("7_a8y0u")])
+starting_time = 30.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1227043791]
 layer = 999
@@ -267,6 +569,48 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control" unique_id=1215172050]
 libraries/ = SubResource("AnimationLibrary_tipki")
 
+[node name="GameNamePopup" type="Label" parent="CanvasLayer/Control" unique_id=2061678655]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0, 0)
+text = "INSERT GAME NAME HERE"
+label_settings = SubResource("LabelSettings_jkv2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/GameNamePopup" unique_id=1198122614]
+libraries/ = SubResource("AnimationLibrary_0ld40")
+
+[node name="LevelUpPopup" type="Label" parent="CanvasLayer/Control" unique_id=81730310]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0, 0)
+text = "LEVEL UP!!!"
+label_settings = SubResource("LabelSettings_jkv2x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/LevelUpPopup" unique_id=1339291731]
+libraries/ = SubResource("AnimationLibrary_yc10j")
+
 [node name="Control2" type="Control" parent="CanvasLayer" unique_id=1494001974]
 layout_mode = 3
 anchors_preset = 15
@@ -306,3 +650,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MicrogameSpawner" type="Node2D" parent="." unique_id=1358850749]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=498186801]
+layer = 1000
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=919937040]
+material = SubResource("ShaderMaterial_g4v7s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2" unique_id=1091467718]
+libraries/ = SubResource("AnimationLibrary_muem4")

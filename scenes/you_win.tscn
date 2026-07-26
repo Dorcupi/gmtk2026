@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://b1s631pd5t4xl"]
+
+[ext_resource type="Script" uid="uid://dht20r7lev0xt" path="res://scripts/you_win.gd" id="1_077re"]
+[ext_resource type="Shader" uid="uid://bs8efxd4ky7hr" path="res://shaders/stripes.gdshader" id="1_nw31f"]
+[ext_resource type="Texture2D" uid="uid://m8cq3yme86k1" path="res://assets/ui/Yellow/Double/button_round_flat.png" id="2_0qell"]
+[ext_resource type="Texture2D" uid="uid://cglb1yrg1i7yv" path="res://assets/ui/Yellow/Double/button_round_depth_gradient.png" id="3_077re"]
+[ext_resource type="Texture2D" uid="uid://4jxvkqlw1sgb" path="res://assets/ui/Yellow/Double/button_round_gradient.png" id="4_rfojx"]
+[ext_resource type="FontFile" uid="uid://bf3vll2nksry7" path="res://assets/fonts/Gorditas-Bold.ttf" id="5_sdx3b"]
+[ext_resource type="Shader" uid="uid://b72u0bllgx3x2" path="res://shaders/transition.gdshader" id="7_rfojx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cj0xg"]
+shader = ExtResource("1_nw31f")
+shader_parameter/color_gap = Color(0.9764706, 0.9098039, 0.63529414, 1)
+shader_parameter/color_stripe = Color(0.96371835, 0.87453634, 0.5058518, 1)
+shader_parameter/divisions = 12.0
+shader_parameter/stripe_bias = 2.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 0.58
+
+[sub_resource type="LabelSettings" id="LabelSettings_lx35p"]
+font = ExtResource("5_sdx3b")
+font_size = 60
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdx3b"]
+shader = ExtResource("7_rfojx")
+shader_parameter/AspectRatio = 1.5
+shader_parameter/Diamonds = 10.0
+shader_parameter/pixel_size = 0.08
+shader_parameter/height = -1.0
+shader_parameter/disable_pixel = false
+
+[sub_resource type="Animation" id="Animation_jkv2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jbj1t"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cj0xg"]
+_data = {
+&"RESET": SubResource("Animation_jkv2x"),
+&"fade_out": SubResource("Animation_jbj1t")
+}
+
+[node name="Node2D" type="Node2D" unique_id=2122611911]
+script = ExtResource("1_077re")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=812679506]
+layer = 999
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1840204026]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Control" unique_id=1440311534]
+material = SubResource("ShaderMaterial_cj0xg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+mouse_filter = 2
+color = Color(0.9764706, 0.9098039, 0.63529414, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1535813754]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer" unique_id=1030135087]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="ButtonShadow" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/Control" unique_id=2071264881]
+modulate = Color(0, 0, 0, 0.3764706)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -149.0
+offset_right = 160.5
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_0qell")
+
+[node name="Button" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/Control" unique_id=872511122]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -160.5
+offset_right = 160.5
+offset_bottom = 160.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_077re")
+texture_pressed = ExtResource("4_rfojx")
+texture_hover = ExtResource("3_077re")
+texture_disabled = ExtResource("2_0qell")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Control/Button" unique_id=456884570]
+modulate = Color(1, 1, 1, 0.8156863)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -7.5
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY AGAIN"
+label_settings = SubResource("LabelSettings_lx35p")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1478171717]
+layer = 1000
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1173689716]
+material = SubResource("ShaderMaterial_sdx3b")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer2" unique_id=1098607648]
+libraries/ = SubResource("AnimationLibrary_cj0xg")
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Control/Button" to="." method="_on_button_pressed"]

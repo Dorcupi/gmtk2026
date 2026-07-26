@@ -4,7 +4,8 @@ class_name MainGame
 enum GAME_STATE {
 	MAIN_SCENE,
 	MINIGAME,
-	MOVING_BACK
+	MOVING_BACK,
+	GAME_OVER,
 }
 
 # -- CANVAS LAYER HEIRACRCHY --
@@ -18,13 +19,16 @@ enum GAME_STATE {
 @export var microgame_button: MicrogameButton
 @export var main_animation_player: AnimationPlayer
 @export var microgame_spawner: Node2D
+@export var game_name_popup: Label
+@export var level_up_popup: Label
+@onready var trans_animation_player: AnimationPlayer = $CanvasLayer2/AnimationPlayer
 
 ## Variables
 @export var microgames: Array[PackedScene]
 @onready var unplayed_microgames: Array[PackedScene] = microgames.duplicate()
 @export var starting_time: float = 60.0
 @export var start_add_amount: Array[float] = [3, 5]
-var time_left: float = starting_time
+@onready var time_left: float = starting_time
 var current_state: GAME_STATE = GAME_STATE.MAIN_SCENE
 var current_microgame: Microgame
 var add_amount: Array[float] = start_add_amount
@@ -33,12 +37,23 @@ var level: int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	microgame_button.button.pressed.connect(start_microgame)
+	trans_animation_player.play_backwards("fade_out")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time_left -= delta
+	if current_state != GAME_STATE.GAME_OVER:
+		time_left -= delta
 	time_left_label.text = "%.0f" % time_left
+	if current_state == GAME_STATE.MAIN_SCENE:
+		if time_left <= 0.0:
+			current_state = GAME_STATE.GAME_OVER
+			trans_animation_player.play("fade_out")
+			await trans_animation_player.animation_finished
+			get_tree().change_scene_to_file("res://scenes/you_win.tscn")
+	elif current_state == GAME_STATE.MINIGAME:
+		if time_left <= 0.0:
+			current_microgame.emit_signal("lose_game")
 
 func spawn_microgame() -> void:
 	var microgame: Node
@@ -63,7 +78,8 @@ func level_up() -> void:
 		if not i <= 0.5:
 			add_amount[add_amount.find(i)] = (i - 0.5)
 	unplayed_microgames = microgames.duplicate()
-	print("LEVEL UP")
+	level_up_popup.get_node("AnimationPlayer").play("popup")
+	await level_up_popup.get_node("AnimationPlayer").animation_finished
 
 func despawn_microgame() -> void:
 	current_microgame.queue_free()
@@ -73,6 +89,8 @@ func start_microgame() -> void:
 	if current_state == GAME_STATE.MAIN_SCENE:
 		current_state = GAME_STATE.MINIGAME
 		spawn_microgame()
+		game_name_popup.text = current_microgame.game_name
+		game_name_popup.get_node("AnimationPlayer").play("appear")
 		main_animation_player.play("break_apart")
 		await main_animation_player.animation_finished
 		current_microgame.game_playing = true
