@@ -62,7 +62,7 @@ func spawn_microgame() -> void:
 		unplayed_microgames.erase(microgame_scene)
 		microgame = microgame_scene.instantiate()
 	else:
-		level_up()
+		await level_up()
 		var microgame_scene = unplayed_microgames.pick_random()
 		unplayed_microgames.erase(microgame_scene)
 		microgame = microgame_scene.instantiate()
@@ -88,7 +88,7 @@ func despawn_microgame() -> void:
 func start_microgame() -> void:
 	if current_state == GAME_STATE.MAIN_SCENE:
 		current_state = GAME_STATE.MINIGAME
-		spawn_microgame()
+		await spawn_microgame()
 		game_name_popup.text = current_microgame.game_name
 		game_name_popup.get_node("AnimationPlayer").play("appear")
 		main_animation_player.play("break_apart")
